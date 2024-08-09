@@ -20,7 +20,6 @@ addEventListener('mousemove', (e) => {
     document.getElementById("mouseCondition").innerText = mouseX + "," + mouseY;
 
     if (start) {
-        console.log("Inside");
 
         c.clearRect(0, 0, 1024, 576);
 
@@ -50,8 +49,6 @@ addEventListener('mousemove', (e) => {
             c.rect(currentBrush[0], currentBrush[1], mouseX - currentBrush[0], mouseY - currentBrush[1]);
             c.stroke();
         } else if (currMouse == "Circle" && saved) {
-            console.log(circle.length);
-
             c.beginPath();
             c.arc(currentBrush[0], currentBrush[1], Math.sqrt(Math.pow(mouseX - currentBrush[0], 2) + Math.pow(mouseY - currentBrush[1], 2)), 0, 2 * Math.PI)
             c.stroke();
