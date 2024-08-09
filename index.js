@@ -90,23 +90,38 @@ let x = 0
 
 
 
-function selectRect() {
+function selectRect(e) {
+    let yt = document.getElementsByClassName("action-btn")
+    for (let i = 0; i < yt.length; i++) {
+        yt[i].classList.remove("active")
+    }
+    e.classList.add("active")
     currMouse = "Rect"
 }
 
-function selectCircle() {
+function selectCircle(e) {
+    let yt = document.getElementsByClassName("action-btn")
+    for (let i = 0; i < yt.length; i++) {
+        yt[i].classList.remove("active")
+    }
+    e.classList.add("active")
     currMouse = "Circle"
 }
 
 
-function Clear() {
+function Clear(e) {
     rect = []
     circle = []
     lines = []
     c.clearRect(0, 0, canvas.width, canvas.height)
 }
 
-function selectBrush() {
+function selectBrush(e) {
+    let yt = document.getElementsByClassName("action-btn")
+    for (let i = 0; i < yt.length; i++) {
+        yt[i].classList.remove("active")
+    }
+    e.classList.add("active")
     currMouse = "Brush"
 }
 

@@ -9,13 +9,14 @@
 </head>
 
 <body>
-    <p id="mouseCondition">brush</p>
+    <p id="mouseCondition"></p>
     <canvas id="canvas" width="1024px" height="576px" style="border: 1px solid black;background-color: white;"></canvas>
     <div class="tools">
-        <button class="action-btn" onclick="selectRect()">rect</button>
-        <button class="action-btn" onclick="selectCircle()">circle</button>
-        <button class="action-btn" onclick="Clear()">clear</button>
-        <button class="action-btn" onclick="selectBrush()">brush</button>
+        <button class="action-btn" onclick="selectRect(this)">Rect</button>
+        <button class="action-btn active" onclick="selectCircle(this)">Circle</button>
+        <button class="action-btn" onclick="Clear(this)">Clear</button>
+        <button class="action-btn" onclick="selectBrush(this)">Brush</button>
+        <button class="action-btn" onclick="selectErase(this)">Erase</button>
     </div>
     <script src="./index.js"></script>
 </body>
