@@ -1,7 +1,6 @@
 let canvas = document.getElementById('canvas')
 let c = canvas.getContext("2d")
 
-
 var mouseX = 0;
 var mouseY = 0;
 
@@ -17,7 +16,7 @@ var saved = false
 addEventListener('mousemove', (e) => {
     mouseX = e.clientX - 248 - 8;
     mouseY = e.clientY - 98 + 40;
-    document.getElementById("mouseCondition").innerText = mouseX + "," + mouseY;
+    // document.getElementById("mouseCondition").innerText = mouseX + "," + mouseY;
 
     if (start) {
 
