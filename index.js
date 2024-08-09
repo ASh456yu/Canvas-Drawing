@@ -19,8 +19,8 @@ addEventListener('mousemove', (e) => {
     // document.getElementById("mouseCondition").innerText = mouseX + "," + mouseY;
 
     if (start) {
-
-        c.clearRect(0, 0, 1024, 576);
+        c.fillStyle = "white";
+        c.fillRect(0, 0, 1024, 576);
 
         for (let i = 0; i < rect.length; i++) {
             const element = rect[i];
