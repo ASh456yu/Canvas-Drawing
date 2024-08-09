@@ -15,11 +15,13 @@ var start = 0
 var saved = false
 
 addEventListener('mousemove', (e) => {
-    mouseX = e.clientX - 247;
-    mouseY = e.clientY - 98;
-    document.getElementById("mouseCondition").innerText = mouseY + "," + mouseX;
+    mouseX = e.clientX - 248 - 8;
+    mouseY = e.clientY - 98 + 40;
+    document.getElementById("mouseCondition").innerText = mouseX + "," + mouseY;
 
     if (start) {
+        console.log("Inside");
+
         c.clearRect(0, 0, 1024, 576);
 
         for (let i = 0; i < rect.length; i++) {
@@ -39,7 +41,7 @@ addEventListener('mousemove', (e) => {
             const element = lines[i];
             c.beginPath();
             c.moveTo(element.x, element.y)
-            c.lineTo(element.x+element.xl, element.y+element.yl)
+            c.lineTo(element.x + element.xl, element.y + element.yl)
             c.stroke();
         }
 
@@ -48,6 +50,8 @@ addEventListener('mousemove', (e) => {
             c.rect(currentBrush[0], currentBrush[1], mouseX - currentBrush[0], mouseY - currentBrush[1]);
             c.stroke();
         } else if (currMouse == "Circle" && saved) {
+            console.log(circle.length);
+
             c.beginPath();
             c.arc(currentBrush[0], currentBrush[1], Math.sqrt(Math.pow(mouseX - currentBrush[0], 2) + Math.pow(mouseY - currentBrush[1], 2)), 0, 2 * Math.PI)
             c.stroke();
@@ -62,41 +66,25 @@ addEventListener('mousemove', (e) => {
 
 addEventListener('click', (e) => {
     if (mouseX > 0 && mouseX < 1024 && mouseY > 0 && mouseY < 576) {
-        if (currMouse == "Rect") {
-            if (!saved) {
-                currentBrush[0] = mouseX;
-                currentBrush[1] = mouseY;
-                saved = 1;
-            } else {
+        if (!saved) {
+            currentBrush[0] = mouseX;
+            currentBrush[1] = mouseY;
+            saved = 1;
+        } else {
+            if (currMouse == "Rect") {
                 rect.push({ x: currentBrush[0], y: currentBrush[1], xl: mouseX - currentBrush[0], yl: mouseY - currentBrush[1] });
-                saved = 0;
-                currentBrush[0] = undefined;
-                currentBrush[1] = undefined;
-            }
-        } else if (currMouse == "Circle") {
-            if (!saved) {
-                currentBrush[0] = mouseX;
-                currentBrush[1] = mouseY;
-                saved = 1;
-            } else {
+            } else if (currMouse == "Circle") {
                 circle.push({ x: currentBrush[0], y: currentBrush[1], xl: mouseX - currentBrush[0], yl: mouseY - currentBrush[1] });
-                saved = 0;
-                currentBrush[0] = undefined;
-                currentBrush[1] = undefined;
-            }
-        } else if (currMouse == "Brush") {
-            if (!saved) {
-                currentBrush[0] = mouseX;
-                currentBrush[1] = mouseY;
-
-                saved = 1;
-            } else {
+            } else if (currMouse == "Brush") {
                 lines.push({ x: currentBrush[0], y: currentBrush[1], xl: mouseX - currentBrush[0], yl: mouseY - currentBrush[1] });
-                saved = 0;
-                currentBrush[0] = undefined;
-                currentBrush[1] = undefined;
             }
+            saved = 0;
+            currentBrush[0] = undefined;
+            currentBrush[1] = undefined;
         }
+
+
+
         start = !start;
     }
 });
